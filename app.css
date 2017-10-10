@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+ 
+    color: #576366;
+    background: #5fcf80;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+menu ul{
+  margin: 0;
+  padding: 0; }
+menu li {
+  display: inline-block;
+  padding: 5px;
+}
+a.active {
+  color: #444;
+  font-weight: bold;
+  text-decoration: none;
+}
+header {
+  padding: 10px;
+ 
+  color: #ccc;
+  font-size: 20px;
+  font-weight: bold;
+ 
+
+}
+menu {
+  background-color: #ccc;
+  padding: 5px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+ul {
+  list-style-type: none;
+}
+.main-content {
+    padding: 1em 2em;
+}
+.teacher-img{
+  width: 350px;
+  border-radius: .3em;
+}
+
+.container {
+  width: 95%;
+  max-width: 780px;
+  padding-bottom: 2em;
+  margin: 0 auto 2em;
+  background: #fff;
+  border-radius: .5em;
+  -webkit-box-shadow: 0 3px rgba(0,0,0,.1);
+  box-shadow: 0 3px rgba(0,0,0,.1);
+  overflow: hidden;
+}
+
+#primerinput{
+  width: 30px;
+}
