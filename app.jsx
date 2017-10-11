@@ -3,59 +3,95 @@
 'using strict';
 //import React from "react";
 //import ReactDOM from "react-dom"; 
-
-
-
-
-class Country extends React.Component {
-  render(){
-      return(
-          <div>
-          <header>
-          <h3 className="text-center">Sign up</h3>
-          <p className="text-center">Join now for free ride credit</p>
-          </header>
-          <section className="container">
-              <form className="text-center">
-                  
-                      
-                      <br></br>
-                      <div className="row">
-        <div className="col-sm-12 text-center">
-           <div className="btn-group">
+class SignUp extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			alert: []
+		}
+		this.handleSubmit = this.handleSubmit.bind(this)
+	}
+	handleSubmit(e){
+    e.preventDefault()
+    let alert = [];
     
+    const phone = this.phone.value
+    const re = /^([0-9]+){9}$/;
+    if(!re.test(phone)) {
+      alert.push("Phone is not valid");
+    }
+       
     
-<a className="dropdown-toggle" data-toggle="dropdown" href="#">
-Select Country<span class="caret"></span></a>
-<ul className="dropdown-menu">
-  <li><a href="#">
-    <img src="./flags/flat/ico/Australia.ico" width="30"/>Australia</a></li>
-    <li><a href="#"><img src="./flags/flat/ico/Canada.ico" width="30"/>Canada</a></li>
-  <li><a href="#"><img src="./flags/flat/ico/China.ico" width="30"/>China</a></li>
-  <li><a href="#"><img src="./flags/flat/ico/France.ico" width="30"/>France</a></li>
-  <li><a href="#"><img src="./flags/flat/ico/India.ico" width="30"/>India</a></li>
-    <li><a href="#"><img src="./flags/flat/ico/Japan.ico" width="30"/>Japan</a></li>
-  <li><a href="#"><img src="./flags/flat/ico/Mexico.ico" width="30"/>Mexico</a></li>
-  <li><a href="#"><img src="./flags/flat/ico/Puerto-Rico.ico" width="30"/>Puerto Rico</a></li>
-  <li><a href="#"><img src="./flags/flat/ico/United-Kingdom.ico" width="30"/>United Kingdom</a></li>                         
-</ul>
-</div>
-
-</div>
-</div>
-<br></br>
-<input type="text" name="celular" value="+51" id="primerinput"></input><input id="phonenum" type="tel" placeholder="112233445" pattern="^\d{3}\d{3}\d{3}$" required ></input>
-                     
-                                           
-                    </form>
-
-          </section>
-      </div>
-      )
+    this.setState({alert: alert})
+    e.submit();
   }
-}
+  
+	render() {
+	  const { model } = this.props;
+  
+	  const onInputChange = e => {
+		this.setState({
+		  goFordward: e.target.checked
+		});
+	  };
+  
+	  return (
+		  <div>
+			  <section className="container-fluid form text-center">
+				  <header>
+					  <div className="btnBack">
+						  <NavLink to="/signup-validation">
+							  <i className="material-icons back">keyboard_arrow_left</i>
+						  </NavLink>
+					  </div>
+					  <h1 className="text-center">Sign Up</h1>
+					  <h4 className="text-center">Join Now for free ride credit.</h4>
+					  <hr />
+				  </header>
+				  <form className="text-center">
+				  <br></br>
+				  <div className="row">
+					  <div className="col-sm-12 text-center">
+						  <div className="btn-group">
+							  <span>Select Country</span>
+							  <select className="form-control ">
+								  <option id="per">Perú</option>
+								  <option id="mex">Mexico</option>
+								  <option id="chile">Chile</option>
+							  </select>
+						  </div>
+					  </div>
 
-ReactDOM.render(<Country />, document.getElementById("container"));
-
-
-//export default App;
+					  <br></br>
+					  <br></br>
+					  <br></br>
+					  <div className="col-sm-12 text-center">
+						  <input
+						   type="text"
+						   name="celular" 
+						   value="+51"
+						    id="primerinput"></input>
+								<div className="alert">
+								{ this.state.alert.map(val => {
+									return <div>{val}</div>
+								})}
+								</div>
+				
+								<label for="phone" >Phone</label>
+								<input id="phone" type="textfield"
+									ref={ input => this.phone = input }
+								/>
+						
+																			
+								<button onClick={this.handleSubmit}>Submit</button>
+							</div>
+					  }
+					 </div>
+				  </form>
+				 </section>
+		  </div>
+	  );
+	 
+	}
+  }
+ export default SignUp;
